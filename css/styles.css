@@ -1,0 +1,64 @@
+/*
+Student Christian Alejandro Hidalgo Gonzalez
+Student ID 22187872
+Course: COMP721 - Web Development
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: radial-gradient(
+    circle,
+    rgb(180, 180, 180) 0%,
+    rgb(185, 185, 185) 100%
+  );
+}
+section {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.image {
+  width: 100px;
+  height: 100px;
+  margin-top: -20px;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+h1 {
+  text-align: center;
+}
+.nav {
+  display: flex;
+}
+.nav span {
+  background-color: #333;
+  width: 2px;
+  height: 17px;
+}
+.nav a {
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 10px;
+  transition: background-color 0.3s ease;
+}
+.nav a:hover {
+  color: rgb(3, 158, 255);
+}

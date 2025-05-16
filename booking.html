@@ -1,0 +1,185 @@
+<!--
+Student Christian Alejandro Hidalgo Gonzalez
+Student ID 22187872
+Course: COMP721 - Web Development
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./booking.js" defer></script>
+    <script src="./mapAddress.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkchLxqeZ0tbR7kPYu1quyv8CClMn5hsE&loading=async&libraries=places&callback=initAutocomplete"
+      async
+      defer
+    ></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/booking.css" />
+    <title>CabOnline</title>
+  </head>
+  <body>
+    <section>
+      <!-- Header Section -->
+      <header>
+        <div class="image">
+          <img src="img/logo1.png" alt="taxi logo" />
+        </div>
+      </header>
+      <!-- Header Section End -->
+      <!-- Main Section -->
+      <main>
+        <h1>Book your service</h1>
+        <div class="container">
+          <div id="reference"></div>
+          <!-- Booking Form -->
+          <form id="booking-form">
+            <div class="group-inputs">
+              <div class="input">
+                <label for="name">Name: </label>
+                <input
+                  class="small"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Customer Name"
+                  pattern="[A-Za-z\s]+"
+                  required
+                />
+              </div>
+
+              <div class="input">
+                <label for="phone">Contact: </label>
+                <input
+                  class="small"
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone number"
+                  pattern="\d{10,12}"
+                  title="Phone number must be 10 to 12 digits long"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="space"></div>
+
+            <div class="input">
+              <label for="autocomplete" class="address">Pickup Location: </label>
+
+              <input
+                type="text"
+                id="autocomplete"
+                name="pickup"
+                placeholder="Enter pickup location"
+                required
+              />
+            </div>
+
+            <div class="group-inputs">
+              <div class="input">
+                <label for="number">Number: </label>
+
+                <input
+                  class="small"
+                  type="text"
+                  id="snumber"
+                  name="snumber"
+                  placeholder="Street #"
+                  required
+                />
+              </div>
+              <div class="input">
+                <label for="unit">Unit: </label>
+
+                <input
+                  class="small"
+                  type="text"
+                  id="unumber"
+                  name="unumber"
+                  placeholder="Unit #"
+                />
+              </div>
+            </div>
+
+            <div class="group-inputs">
+              <div class="input">
+                <label for="suburb">Suburb </label>
+                <input
+                  class="small"
+                  type="text"
+                  id="sbname"
+                  name="sbname"
+                  placeholder="Optional"
+                />
+              </div>
+              <div class="input">
+                <label for="postcode">Postcode: </label>
+
+                <input
+                  class="small"
+                  type="text"
+                  id="postcode"
+                  name="postcode"
+                  required
+                />
+              </div>
+            </div>
+            <div class="group-inputs">
+              <div class="input">
+                <label for="pudate">Date: </label>
+
+                <input
+                  class="small"
+                  type="date"
+                  id="pudate"
+                  name="pudate"
+                  required
+                />
+              </div>
+              <div class="input">
+                <label for="putime">Time: </label>
+
+                <input
+                  class="small"
+                  type="time"
+                  id="putime"
+                  name="putime"
+                  value="13:00"
+                  required
+                />
+              </div>
+            </div>
+            <p class="error-message" id="error-message">
+              <strong>Invalid input:</strong> date and time cannot be set to a
+              past value.
+            </p>
+            <div class="space"></div>
+
+            <div class="input">
+              <label for="dropoff" class="address">Dropoff Location: </label>
+
+              <input
+                type="text"
+                id="dpAutocomplete"
+                name="dropoff"
+                placeholder="Enter dropoff location"
+                required
+              />
+            </div>
+
+            <button class="btn" type="submit">Book Now</button>
+          </form>
+          <!-- Booking Form End -->
+          <!-- Map Section -->
+          <div id="map"></div>
+          <!-- Map section End -->
+        </div>
+      </main>
+    </section>
+  </body>
+</html>
