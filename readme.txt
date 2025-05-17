@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🚖 Simple Taxi Booking System</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: auto; padding: 20px;">
+
 <h1>🚖 Simple Taxi Booking System</h1>
 
 An interactive, real-time taxi booking system built with HTML, CSS, JavaScript, and PHP — designed for both customers and administrators.<br/>
@@ -78,3 +86,6 @@ API: Google Maps JavaScript API (Places + Directions)<br/>
 
 <h3>📄 License</h3>
 This project is open-source and free to use for learning or academic purposes.
+
+</body>
+</html>
