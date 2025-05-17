@@ -55,7 +55,7 @@ An interactive, real-time **taxi booking system** built with HTML, CSS, JavaScri
 > Replace these links with your own screenshots
 
 ### 🚕 Booking Form  
-![Booking Form](https://your-image-url.com/form.png)
+https://github.com/Chidalgo007/taxi_booking/blob/main/img/1.png
 
 ### 🛠️ Admin Dashboard  
 ![Admin Panel](https://your-image-url.com/admin.png)
