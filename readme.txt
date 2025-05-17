@@ -7,7 +7,7 @@ An interactive, real-time taxi booking system built with HTML, CSS, JavaScript, 
 
 <br/>
 
-<img src="https://your-image-url.com/banner.png" alt="Taxi Booking Banner" width="100%" />
+<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/logo.png" width="50%" /><br/>
 
 <br/><br/>
 
@@ -52,12 +52,12 @@ API: Google Maps JavaScript API (Places + Directions)<br/>
 <h3>📸 Screenshots</h3>
 
 🚕 Booking Form<br/>
-<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/1.png" width="100%" /><br/>
-<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/2.png" width="100%" /><br/>
+<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/1.png" width="50%" /><br/>
+<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/2.png" width="50%" /><br/>
 <br/>
 🛠️ Admin Dashboard<br/>
-<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/3.png" width="100%" /><br/>
-<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/4.png" width="100%" /><br/>
+<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/3.png" width="50%" /><br/>
+<img src="https://github.com/Chidalgo007/taxi_booking/blob/main/img/4.png" width="50%" /><br/>
 
 <br/>
 
