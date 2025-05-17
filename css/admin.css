@@ -3,7 +3,10 @@ Student Christian Alejandro Hidalgo Gonzalez
 Student ID 22187872
 Course: COMP721 - Web Development
 */
-
+.admin {
+  background-color: #ccc;
+    justify-content: start;
+}
 h3 {
   color: #333;
   font-size: 24px;

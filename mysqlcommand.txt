@@ -3,3 +3,63 @@ Student Christian Alejandro Hidalgo Gonzalez
 Student ID 22187872
 Course: COMP721 - Web Development
 */
+
+-- 1. Create bookings table if it doesn't exist
+CREATE TABLE IF NOT EXISTS bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    booking_ref VARCHAR(10) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    pickup TEXT NOT NULL,
+    street_number VARCHAR(20),
+    unit_number VARCHAR(20),
+    suburb VARCHAR(50),
+    postcode VARCHAR(10),
+    pickup_date DATE NOT NULL,
+    pickup_time TIME NOT NULL,
+    pickup_datetime DATETIME NOT NULL,
+    dropoff TEXT NOT NULL,
+    status VARCHAR(20) NOT NULL DEFAULT 'unassigned'
+);
+
+-- 2. Select max id from bookings (to generate next booking_ref)
+SELECT MAX(id) as max_id FROM bookings;
+
+-- 3. Insert new booking
+INSERT INTO bookings (
+    booking_ref, name, phone, pickup, street_number, unit_number, suburb, postcode, pickup_date, pickup_time, pickup_datetime, dropoff
+) VALUES (
+    :booking_ref, :name, :phone, :pickup, :street_number, :unit_number, :suburb, :postcode, :pickup_date, :pickup_time, :pickup_datetime, :dropoff
+);
+
+-- 4. Select bookings based on search (booking_ref, phone, or name)
+SELECT * 
+FROM bookings 
+WHERE booking_ref = ?
+ORDER BY pickup_datetime;
+
+SELECT * 
+FROM bookings 
+WHERE phone = ?
+ORDER BY pickup_datetime;
+
+SELECT * 
+FROM bookings 
+WHERE LOWER(name) = ?
+ORDER BY pickup_datetime;
+
+-- 5. Select unassigned bookings with pickup time in next 2 hours
+SELECT * 
+FROM bookings 
+WHERE status = 'unassigned'
+AND pickup_datetime BETWEEN ? AND ?
+ORDER BY pickup_datetime;
+
+-- 6. Update booking status to assigned for a given booking ID if unassigned
+UPDATE bookings 
+SET status = 'assigned' 
+WHERE id = :id 
+AND status = 'unassigned';
+
+-- 7. Select booking status by booking_ref
+SELECT status FROM bookings WHERE booking_ref = :booking_ref;

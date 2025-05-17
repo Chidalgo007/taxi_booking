@@ -14,12 +14,16 @@ google key = AIzaSyCkchLxqeZ0tbR7kPYu1quyv8CClMn5hsE
 
 - booking.php
 - admin.php
+- assign.php
+- get_status.php
 
 - booking.js
 - admin.js
+- mapAddress.js
 
 - style.css
 - booking.css
 - admin.css
 
 - mysqlcommand.txt
+- readme.txt

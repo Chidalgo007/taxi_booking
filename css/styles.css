@@ -12,14 +12,14 @@ Course: COMP721 - Web Development
 body {
   font-family: Arial, sans-serif;
   color: #333;
-  background: radial-gradient(
-    circle,
-    rgb(180, 180, 180) 0%,
-    rgb(185, 185, 185) 100%
-  );
+  background-image: url("../img/bg.jpeg");
+  /* background-image: url("../img/bg1.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 section {
   width: 100%;
+  height: 100vh;
   padding: 20px;
   display: flex;
   flex-direction: column;

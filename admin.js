@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBtn = document.getElementById("sbuton");
   let allBookings = []; // Store all bookings for client-side filtering
 
-  // Create table structure once
+  // Create table structure once and append it to the display
   const bookingsTable = document.createElement("table");
   bookingsTable.innerHTML = `
     <thead>
@@ -27,13 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
   bookingDisplay.appendChild(bookingsTable);
   const bookingsTableBody = document.getElementById("bookings-table-body");
 
-  // Function to render bookings
+  // Render all bookings into the table
   function renderBookings(bookings) {
     bookingsTableBody.innerHTML = "";
     if (bookings.length === 0) {
       bookingsTableBody.innerHTML = `<tr><td colspan="8">No bookings found</td></tr>`;
       return;
     }
+
+    // Create a row for each booking
     bookings.forEach((booking) => {
       const bookingRow = document.createElement("tr");
       bookingRow.innerHTML = `
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bookingsTableBody.appendChild(bookingRow);
     });
 
-    // Add event listeners to all assign buttons
+    // Add click listeners for assign buttons
     document.querySelectorAll(".abtn").forEach((btn) => {
       btn.addEventListener("click", function () {
         const bookingId = this.getAttribute("data-id");
@@ -64,13 +66,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Assign a booking and update UI
   function assignBooking(bookingId, buttonElement) {
     if (!bookingId) return;
 
-    // Disable button during processing
+    // Show assigning state
     buttonElement.disabled = true;
     buttonElement.textContent = "Assigning...";
 
+    // Send assignment request to server
     fetch("assign.php", {
       method: "POST",
       headers: {
@@ -84,17 +88,16 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then((data) => {
         if (data.success) {
-          // Update the status in our local data
+          // Update local status
           const booking = allBookings.find((b) => b.id == bookingId);
           if (booking) {
             booking.status = "assigned";
           }
 
-          // Update the UI
+          // Update button and status cell
           buttonElement.textContent = "Assigned";
           buttonElement.disabled = true;
 
-          // Update status cell
           const row = buttonElement.closest("tr");
           if (row) {
             const statusCell = row.querySelector(".status-cell");
@@ -117,12 +120,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+  // Show a temporary loading row
   function showLoadingRow() {
     bookingsTableBody.innerHTML = `
     <tr><td colspan="8">Loading...</td></tr>
   `;
   }
 
+  // Show temporary message at top of page
   function showAlert(message, type) {
     document.querySelectorAll(".alert").forEach((el) => el.remove()); // remove old ones
     const alertDiv = document.createElement("div");
@@ -132,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => alertDiv.remove(), 3000);
   }
 
-  // Load all bookings on page load
+  // Fetch all bookings from server and display them
   function loadAllBookings() {
     showLoadingRow();
     fetch("admin.php")
@@ -163,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Filter bookings based on search input
+  // Fetch and display filtered bookings based on search input
   function filterBookings(searchTerm) {
     if (!searchTerm) {
       renderBookings(allBookings);
@@ -177,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!response.ok) throw new Error("Network response was not ok");
 
         const text = await response.text();
-        console.log("Raw response:", text); // Add this!
+        console.log("Raw response:", text); // Debug: log raw text response
         let data;
         try {
           data = JSON.parse(text);
@@ -205,34 +210,37 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Event listeners
+  // Add event listener for search button
   searchBtn.addEventListener("click", handleSearch);
-  // Enter key press in input
+
+  // Add Enter key support to search input
   document.getElementById("bsearch").addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
       e.preventDefault(); // prevent form submission or default behavior
-      handleSearch();
+      handleSearch(); // trigger search manually
     }
   });
 
+  // Sanitize input to remove symbols and special characters
   function sanitizeInput(input) {
     return input.replace(/[^a-zA-Z0-9\s]/g, "").trim();
   }
-  // Handle search input
+
+  // Main search handler function
   function handleSearch() {
     console.log("Search triggered");
     const rawInput = document.getElementById("bsearch").value;
-    const searchInput = sanitizeInput(rawInput);
+    const searchInput = sanitizeInput(rawInput); // clean up input before sending
 
-    // if value is empty, load all bookings
+    // Load all if empty
     if (searchInput === "") {
       loadAllBookings();
     } else {
-      // if value is not empty, filter bookings
+      // Otherwise search
       filterBookings(searchInput);
     }
   }
 
-  // Initial load
+  // Initial load when page is ready
   loadAllBookings();
 });
